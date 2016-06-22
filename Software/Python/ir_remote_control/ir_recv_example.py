@@ -33,13 +33,14 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-'''   
+'''
 ##################################################
 import lirc
-#initialize the IR daemon
-sockid = lirc.init("keyes", blocking = False)
+
+# initialize the IR daemon
+sockid = lirc.init("keyes", blocking=False)
 while True:
-	#Wait for the next IR code to arrive. The codes are queued in a buffer before printing
-	a= lirc.nextcode()  
-	if len(a) !=0:
+	# Wait for the next IR code to arrive. The codes are queued in a buffer before printing
+	a = lirc.nextcode()
+	if len(a) != 0:
 		print a[0]

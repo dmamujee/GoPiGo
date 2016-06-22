@@ -34,27 +34,28 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 '''
-import gopigo
 import sys
+
+import gopigo
 
 # Connect the Grove Temperature & Humidity Sensor to the Serial Port on the GoPiGo
 # This example uses the blue colored sensor.
 
 # temp_humidity_sensor_type
-blue = 0    # The Blue colored sensor.
-white = 1   # The White colored sensor.
+blue = 0  # The Blue colored sensor.
+white = 1  # The White colored sensor.
 
 while True:
 	try:
 		# This example uses the blue colored sensor. 
 		# The first parameter is the port, the second parameter is the type of sensor.
-		[temp,humidity] = gopigo.dht(blue)  
-		if temp ==-2.0 or humidity == -2.0:
+		[temp, humidity] = gopigo.dht(blue)
+		if temp == -2.0 or humidity == -2.0:
 			print ("Bad reading, trying again")
-		elif temp ==-3.0 or humidity == -3.0:
+		elif temp == -3.0 or humidity == -3.0:
 			print ("Run the program as sudo")
 			sys.exit()
-		print("temp = %.02f C humidity =%.02f%%"%(temp, humidity))
+		print("temp = %.02f C humidity =%.02f%%" % (temp, humidity))
 
 	except IOError:
 		print ("I2C Error")

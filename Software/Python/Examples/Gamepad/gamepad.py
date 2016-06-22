@@ -26,7 +26,7 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
-'''      
+'''
 #
 ###############################################################
 from evdev import InputDevice, categorize, ecodes, KeyEvent
@@ -36,7 +36,7 @@ from gopigo import *
 gamepad = InputDevice('/dev/input/event0')
 
 # Set our initial speed
-speed=100
+speed = 100
 set_speed(speed)
 
 #
@@ -46,35 +46,34 @@ set_speed(speed)
 # this if/elif block
 #
 for event in gamepad.read_loop():
-    if event.type == ecodes.EV_KEY:
-        keyevent = categorize(event)
-        if keyevent.keystate == KeyEvent.key_down:
-            # BTN_A comes in a tuple
-            if keyevent.keycode[0] == 'BTN_A':
-                print "Back"
-                bwd()
-            elif keyevent.keycode == 'BTN_Y':
-                print "Forward"
-                fwd()
-            elif keyevent.keycode == 'BTN_B':
-                print "Right"
-                right()
-            elif keyevent.keycode == 'BTN_X':
-                print "Left"
-                left()
-            elif keyevent.keycode == 'BTN_THUMBR' or keyevent.keycode == 'BTN_THUMBL':
-                print "Stop"
-                stop()
-            elif keyevent.keycode == 'BTN_TR':
-                print "Faster"
-                speed += 50
-                if speed > 250:
-                    speed = 250
-                set_speed(speed)
-            elif keyevent.keycode == 'BTN_TL':
-                print "Slower"
-                speed -= 50
-                if speed < 50:
-                    speed = 50
-                set_speed(speed)
-
+	if event.type == ecodes.EV_KEY:
+		keyevent = categorize(event)
+		if keyevent.keystate == KeyEvent.key_down:
+			# BTN_A comes in a tuple
+			if keyevent.keycode[0] == 'BTN_A':
+				print "Back"
+				bwd()
+			elif keyevent.keycode == 'BTN_Y':
+				print "Forward"
+				fwd()
+			elif keyevent.keycode == 'BTN_B':
+				print "Right"
+				right()
+			elif keyevent.keycode == 'BTN_X':
+				print "Left"
+				left()
+			elif keyevent.keycode == 'BTN_THUMBR' or keyevent.keycode == 'BTN_THUMBL':
+				print "Stop"
+				stop()
+			elif keyevent.keycode == 'BTN_TR':
+				print "Faster"
+				speed += 50
+				if speed > 250:
+					speed = 250
+				set_speed(speed)
+			elif keyevent.keycode == 'BTN_TL':
+				print "Slower"
+				speed -= 50
+				if speed < 50:
+					speed = 50
+				set_speed(speed)

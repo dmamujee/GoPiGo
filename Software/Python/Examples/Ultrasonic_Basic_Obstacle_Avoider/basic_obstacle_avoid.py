@@ -27,26 +27,27 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
-'''         
+'''
 #
 ########################################################################
 #
 # ! Attach Ultrasonic sensor to A1 Port.
 #
 ########################################################################
-from gopigo import *
 import time
 
-distance_to_stop=20		#Distance from obstacle where the GoPiGo should stop
+from gopigo import *
+
+distance_to_stop = 20  # Distance from obstacle where the GoPiGo should stop
 print "Press ENTER to start"
-raw_input()				#Wait for input to start
-fwd()					#Start moving
+raw_input()  # Wait for input to start
+fwd()  # Start moving
 
 while True:
-	dist=us_dist(15)			#Find the distance of the object in front
-	print "Dist:",dist,'cm'
-	if dist<distance_to_stop:	#If the object is closer than the "distance_to_stop" distance, stop the GoPiGo
+	dist = us_dist(15)  # Find the distance of the object in front
+	print "Dist:", dist, 'cm'
+	if dist < distance_to_stop:  # If the object is closer than the "distance_to_stop" distance, stop the GoPiGo
 		print "Stopping"
-		stop()					#Stop the GoPiGo
+		stop()  # Stop the GoPiGo
 		break
 	time.sleep(.1)

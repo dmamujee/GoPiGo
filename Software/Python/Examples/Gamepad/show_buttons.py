@@ -25,16 +25,15 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
-'''         
+'''
 #
 ###############################################################
-from select import select
 from evdev import InputDevice, categorize, ecodes, KeyEvent
+
 gamepad = InputDevice('/dev/input/event0')
 
 for event in gamepad.read_loop():
-    if event.type == ecodes.EV_KEY:
-        keyevent = categorize(event)
-        if keyevent.keystate == KeyEvent.key_down:
-            print keyevent.keycode
-
+	if event.type == ecodes.EV_KEY:
+		keyevent = categorize(event)
+		if keyevent.keystate == KeyEvent.key_down:
+			print keyevent.keycode

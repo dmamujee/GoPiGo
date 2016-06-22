@@ -20,11 +20,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
 '''
 
 import setuptools
+
 setuptools.setup(
 	name="GoPiGo",
 	description="Drivers and examples for using the GoPiGo in Python",
 	author="Dexter Industries",
 	url="http://www.dexterindustries.com/GoPiGo/",
 	py_modules=['gopigo'],
-	#install_requires=open('requirements.txt').readlines(),
+	# install_requires=open('requirements.txt').readlines(),
 )

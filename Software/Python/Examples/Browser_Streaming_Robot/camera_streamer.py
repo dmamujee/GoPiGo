@@ -23,7 +23,7 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
-'''         
+'''
 #
 # This example is derived from the Dawn Robotics Raspberry Pi Camera Bot
 # https://bitbucket.org/DawnRobotics/raspberry_pi_camera_bot
@@ -57,55 +57,50 @@ along with this program.  If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
 # OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE 
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-import copy
-import os
-import os.path
 import subprocess
 import time
-import logging
 
-#---------------------------------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------------------------------
 class CameraStreamer:
-    
-    """A class to look after streaming images from the Raspberry Pi camera.
-       Ideally, the camera should only be on when somebody wants to stream images.
-       Therefore, startStreaming must be called periodically. If startStreaming
-       is not called before a timeout period expires then the streaming will stop"""
+	"""A class to look after streaming images from the Raspberry Pi camera.
+	   Ideally, the camera should only be on when somebody wants to stream images.
+	   Therefore, startStreaming must be called periodically. If startStreaming
+	   is not called before a timeout period expires then the streaming will stop"""
 
-    DEFAULT_TIMEOUT = 4.0
-    
-    #-----------------------------------------------------------------------------------------------
-    def __init__( self, timeout=DEFAULT_TIMEOUT ):
-            
-        self.cameraStreamerProcess = None
-        self.streamingStartTime = 0
-        self.streamingTimeout = timeout
+	DEFAULT_TIMEOUT = 4.0
 
-    #-----------------------------------------------------------------------------------------------
-    def __del__( self ):
+	# -----------------------------------------------------------------------------------------------
+	def __init__(self, timeout=DEFAULT_TIMEOUT):
 
-        self.stopStreaming()
-        
-    #-----------------------------------------------------------------------------------------------
-    def startStreaming( self ):
-        
-        # Start raspberry_pi_camera_streamer if needed
-        if self.cameraStreamerProcess == None or self.cameraStreamerProcess.poll() != None:
-            
-            self.cameraStreamerProcess = subprocess.Popen( 
-                [ "/usr/local/bin/raspberry_pi_camera_streamer" ] )
-        
-        self.streamingStartTime = time.time()         
-                
-    #-----------------------------------------------------------------------------------------------
-    def update( self ):
-        
-        if time.time() - self.streamingStartTime > self.streamingTimeout:
-            
-            self.stopStreaming()
-                
-    #-----------------------------------------------------------------------------------------------
-    def stopStreaming( self ):
+		self.cameraStreamerProcess = None
+		self.streamingStartTime = 0
+		self.streamingTimeout = timeout
 
-        if self.cameraStreamerProcess != None:
-            self.cameraStreamerProcess.terminate()
+	# -----------------------------------------------------------------------------------------------
+	def __del__(self):
+
+		self.stopStreaming()
+
+	# -----------------------------------------------------------------------------------------------
+	def startStreaming(self):
+
+		# Start raspberry_pi_camera_streamer if needed
+		if self.cameraStreamerProcess == None or self.cameraStreamerProcess.poll() != None:
+			self.cameraStreamerProcess = subprocess.Popen(
+				["/usr/local/bin/raspberry_pi_camera_streamer"])
+
+		self.streamingStartTime = time.time()
+
+		# -----------------------------------------------------------------------------------------------
+
+	def update(self):
+
+		if time.time() - self.streamingStartTime > self.streamingTimeout:
+			self.stopStreaming()
+
+	# -----------------------------------------------------------------------------------------------
+	def stopStreaming(self):
+
+		if self.cameraStreamerProcess != None:
+			self.cameraStreamerProcess.terminate()

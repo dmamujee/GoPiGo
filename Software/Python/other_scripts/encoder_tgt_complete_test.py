@@ -1,13 +1,13 @@
 #!/usr/bin/env python
-from gopigo import *
-import sys
-
 import atexit
+
+from gopigo import *
+
 atexit.register(stop)
 
 enable_encoders()
-print "Ver:",fw_ver()
-print volt(),"V"
+print "Ver:", fw_ver()
+print volt(), "V"
 
 print "\nCHECKING ENCODER READINGS"
 print enc_read(0),
@@ -54,18 +54,18 @@ print ret,
 print "after 2 more sec ",
 print enc_read(0),
 print enc_read(1)
-	
+
 print "\nCHECKING ENCODER TARGETING"
 for i in range(5):
 	print "\nInitial encoder read vals:",
 	fwd()
-	enc_tgt(1,1,72)
+	enc_tgt(1, 1, 72)
 	print enc_read(0),
 	print enc_read(1)
 	while True:
-		enc_stat=read_enc_status()
-		print "Enc tgt Status: ",enc_stat
-		if enc_stat==0:
+		enc_stat = read_enc_status()
+		print "Enc tgt Status: ", enc_stat
+		if enc_stat == 0:
 			break;
 		time.sleep(.5)
 	print "Final encoder read vals:",

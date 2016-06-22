@@ -31,10 +31,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
 '''
 
 import socket
+
 import gopigo
 
 # Listen on localhost at port 5005
-TCP_IP = '127.0.0.1' 
+TCP_IP = '127.0.0.1'
 TCP_PORT = 5005
 BUFFER_SIZE = 20
 
@@ -44,34 +45,34 @@ s.bind((TCP_IP, TCP_PORT))
 print "Server Started"
 
 while True:
-	#Wait for incomming connections
+	# Wait for incomming connections
 	s.listen(1)
-	
-	#Accept an incoming connection
+
+	# Accept an incoming connection
 	conn, addr = s.accept()
-	
+
 	print '\nConnection address:', addr
 	while 1:
-		#Check the data
+		# Check the data
 		data = conn.recv(BUFFER_SIZE)
-		if not data: break	
+		if not data: break
 		print "received data:", data
 		if len(data) <> 1:
 			print ("Invalid command")
 			conn.send("Invalid command")
-		elif data=='f':
+		elif data == 'f':
 			gopigo.fwd()
 			conn.send("Moving forward")
-		elif data=='s':
+		elif data == 's':
 			gopigo.stop()
 			conn.send("Stopping")
-		elif data=='b':
+		elif data == 'b':
 			gopigo.bwd()
 			conn.send("Moving back")
-		elif data=='l':
+		elif data == 'l':
 			gopigo.left()
 			conn.send("Turning left")
-		elif data=='r':
+		elif data == 'r':
 			gopigo.right()
 			conn.send("Turning right")
 		else:

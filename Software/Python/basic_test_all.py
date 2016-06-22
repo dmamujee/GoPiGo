@@ -19,11 +19,13 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
 '''
 
-from gopigo import *
+import atexit
 import sys
 
-import atexit
+from gopigo import *
+
 atexit.register(stop)
+
 
 def print_menu():
 	print "  w	:	Move the GoPiGo forward"
@@ -47,7 +49,8 @@ def print_menu():
 	print "  ?	:	Print the menu again"
 	print "  z	:	Exit"
 	print "Please type a command and press ENTER: "
-	
+
+
 print "  ____       ____  _  ____       "
 print " / ___| ___ |  _ \(_)/ ___| ___  "
 print "| |  _ / _ \| |_) | | |  _ / _ \ "
@@ -58,72 +61,72 @@ print "Welcome to GoPiGo Basic test program\nYou can use this to try out the var
 print_menu()
 while True:
 	print "\nCmd:",
-	a=raw_input()
-	if a=='w':
+	a = raw_input()
+	if a == 'w':
 		fwd()
-	elif a=='a':
+	elif a == 'a':
 		left()
-	elif a=='d':
+	elif a == 'd':
 		right()
-	elif a=='s':
+	elif a == 's':
 		bwd()
-	elif a=='x':
+	elif a == 'x':
 		stop()
-	elif a=='t':
+	elif a == 't':
 		increase_speed()
-	elif a=='g':
+	elif a == 'g':
 		decrease_speed()
-	elif a=='v':
-		print volt(),"V"
-	elif a=='b': #servo test
+	elif a == 'v':
+		print volt(), "V"
+	elif a == 'b':  # servo test
 		for i in range(180):
 			servo(i)
 			print i
 			time.sleep(.02)
-	elif a=='z':
+	elif a == 'z':
 		sys.exit()
-	elif a=='u':
-		print us_dist(15),'cm'
-	elif a=='l':
+	elif a == 'u':
+		print us_dist(15), 'cm'
+	elif a == 'l':
 		led_on(0)
 		led_on(1)
 		time.sleep(1)
 		led_off(0)
 		led_off(1)
-	elif a=='i':
+	elif a == 'i':
 		motor_fwd()
-	elif a=='k':
+	elif a == 'k':
 		motor_bwd()
-	elif a=='n':
+	elif a == 'n':
 		left_rot()
-	elif a=='m':
+	elif a == 'm':
 		right_rot()
-	elif a=='y':
-		enc_tgt(1,1,18)
-	elif a=='f':
-		print "v",fw_ver()
-	elif a=='tr':
-		val=trim_read()
-		if val==-3:
+	elif a == 'y':
+		enc_tgt(1, 1, 18)
+	elif a == 'f':
+		print "v", fw_ver()
+	elif a == 'tr':
+		val = trim_read()
+		if val == -3:
 			print "-3, Trim Value Not set"
 		else:
-			print val-100
-	elif a=='tw':
+			print val - 100
+	elif a == 'tw':
 		print "Enter trim value to write to EEPROM(-100 to 100):",
-		val=int(raw_input())
+		val = int(raw_input())
 		trim_write(val)
 		time.sleep(.1)
-		print "Value in EEPROM: ",trim_read()-100
-	elif a=='tt':
+		print "Value in EEPROM: ", trim_read() - 100
+	elif a == 'tt':
 		print "Enter trim value to test(-100 to 100):",
-		val=int(raw_input())
+		val = int(raw_input())
 		trim_test(val)
 		time.sleep(.1)
-		print "Value in EEPROM: ",trim_read()-100
-	elif a=='st':
+		print "Value in EEPROM: ", trim_read() - 100
+	elif a == 'st':
 		print "Enter Servo position:",
-		val=int(raw_input())
+		val = int(raw_input())
 		servo(val)
-	elif a=='?':
+	elif a == '?':
 		print_menu()
 	time.sleep(.1)

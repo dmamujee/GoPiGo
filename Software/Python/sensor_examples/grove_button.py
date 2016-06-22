@@ -34,6 +34,7 @@ THE SOFTWARE.
 '''
 
 import time
+
 import gopigo
 
 # Connect the Grove Button to digital port D10 or A1
@@ -43,12 +44,12 @@ import gopigo
 # button_pin = gopigo.analogPort
 button_pin = gopigo.digitalPort
 
-gopigo.pinMode(button_pin,"INPUT")
+gopigo.pinMode(button_pin, "INPUT")
 
 while True:
-    try:
-        print (gopigo.digitalRead(button_pin))
-        time.sleep(.5)
+	try:
+		print (gopigo.digitalRead(button_pin))
+		time.sleep(.5)
 
-    except IOError:
-        print ("Error")
+	except IOError:
+		print ("Error")

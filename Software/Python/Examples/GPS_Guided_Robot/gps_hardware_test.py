@@ -16,37 +16,36 @@
 ########################################################################
 
 
-from gopigo import *
-import serial, time
-import smbus
-import math
-import RPi.GPIO as GPIO
-import struct
-import sys
+import serial
+import time
+
 import ir_receiver_check
+from gopigo import *
 
 if ir_receiver_check.check_ir():
 	print "Disable IR receiver before continuing"
 	exit()
 
-ser = serial.Serial('/dev/ttyAMA0',  9600, timeout = 0)	#Open the serial port at 9600 baud
+ser = serial.Serial('/dev/ttyAMA0', 9600, timeout=0)  # Open the serial port at 9600 baud
 ser.flush()
 
+
 def readlineCR():
-    rv = ""
-    while True:
-        time.sleep(0.01)	# This is the critical part.  A small pause 
-        					# works really well here.
-        ch = ser.read()        
-        rv += ch
-        if ch=='\r' or ch=='':
-            return rv
+	rv = ""
+	while True:
+		time.sleep(0.01)  # This is the critical part.  A small pause
+		# works really well here.
+		ch = ser.read()
+		rv += ch
+		if ch == '\r' or ch == '':
+			return rv
+
 
 while True:
-	#readlineCR()
-	x=readlineCR()
+	# readlineCR()
+	x = readlineCR()
 	print x
-	
+
 ########################################################################
 #
 #	The output should look like something below.

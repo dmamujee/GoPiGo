@@ -34,6 +34,7 @@ THE SOFTWARE.
 '''
 
 import time
+
 import gopigo
 
 # Connect the Grove distance sensor to digital port D10 or A1
@@ -45,9 +46,9 @@ distance_sensor_pin = gopigo.digitalPort
 # distance_sensor_pin = gopigo.analogPort
 
 while True:
-    try:
-        print (gopigo.us_dist(distance_sensor_pin))
-        time.sleep(.5)
+	try:
+		print (gopigo.us_dist(distance_sensor_pin))
+		time.sleep(.5)
 
-    except IOError:
-        print ("Error")
+	except IOError:
+		print ("Error")

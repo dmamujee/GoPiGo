@@ -34,6 +34,7 @@ THE SOFTWARE.
 '''
 
 import time
+
 import gopigo
 
 # Connect the Grove LED to digital port D10
@@ -42,23 +43,23 @@ import gopigo
 
 led_pin = gopigo.digitalPort
 
-gopigo.pinMode(led_pin,"OUTPUT")
-i=0
+gopigo.pinMode(led_pin, "OUTPUT")
+i = 0
 while True:
-    try:
-        # Reset
-        if i > 255:
-            i = 0
+	try:
+		# Reset
+		if i > 255:
+			i = 0
 
-        # Current brightness
-        print (i)
+		# Current brightness
+		print (i)
 
-        # Give PWM output to LED
-        gopigo.analogWrite(led_pin,i)
+		# Give PWM output to LED
+		gopigo.analogWrite(led_pin, i)
 
-        # Increment brightness for next iteration
-        i = i + 20
-        time.sleep(.5)
+		# Increment brightness for next iteration
+		i = i + 20
+		time.sleep(.5)
 
-    except IOError:
-        print ("Error")
+	except IOError:
+		print ("Error")

@@ -34,6 +34,7 @@ THE SOFTWARE.
 '''
 
 import time
+
 import gopigo
 
 # Connect the Grove PIR motion sensor to digital port D10 or A1
@@ -43,12 +44,12 @@ import gopigo
 # motion_sensor_pin = gopigo.digitalPort
 motion_sensor_pin = gopigo.analogPort
 
-gopigo.pinMode(motion_sensor_pin,"INPUT")
+gopigo.pinMode(motion_sensor_pin, "INPUT")
 
 while True:
-    try:
-        print (gopigo.digitalRead(motion_sensor_pin))
-        time.sleep(.5)
+	try:
+		print (gopigo.digitalRead(motion_sensor_pin))
+		time.sleep(.5)
 
-    except IOError:
-        print ("Error")
+	except IOError:
+		print ("Error")

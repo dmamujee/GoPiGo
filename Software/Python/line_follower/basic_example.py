@@ -28,17 +28,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
 '''
 
 import line_sensor
-import time
+
 
 def get_sensorval():
 	while True:
-		val=line_sensor.read_sensor()
-		if val[0]<>-1:
+		val = line_sensor.read_sensor()
+		if val[0] <> -1:
 			return val
-		#else:
-			#Read once more to clear buffer and remove junk values
+		# else:
+		# Read once more to clear buffer and remove junk values
 		#	val=line_sensor.read_sensor()
+
+
 while True:
-	l0,l1,l2,l3,l4=get_sensorval()
-	print l0,l1,l2,l3,l4
-	#time.sleep(.05)
+	l0, l1, l2, l3, l4 = get_sensorval()
+	print l0, l1, l2, l3, l4
+# time.sleep(.05)

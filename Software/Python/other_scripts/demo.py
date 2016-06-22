@@ -19,10 +19,10 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
 '''
 
-from gopigo import *
-import sys
-
 import atexit
+
+from gopigo import *
+
 atexit.register(stop)
 
 led_on(0)

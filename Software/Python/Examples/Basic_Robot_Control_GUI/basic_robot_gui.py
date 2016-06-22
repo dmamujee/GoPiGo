@@ -39,14 +39,15 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
-'''     
+'''
 ##############################################################################################################
 
-from gopigo import *	#Has the basic functions for controlling the GoPiGo Robot
-import sys	#Used for closing the running program
-import pygame #Gives access to KEYUP/KEYDOWN events
+import sys  # Used for closing the running program
 
-#Initialization for pygame
+import pygame  # Gives access to KEYUP/KEYDOWN events
+from gopigo import *  # Has the basic functions for controlling the GoPiGo Robot
+
+# Initialization for pygame
 pygame.init()
 screen = pygame.display.set_mode((700, 400))
 pygame.display.set_caption('Remote Control Window')
@@ -73,13 +74,13 @@ Press:
       ->g: Decrease speed
       ->z: Exit
 ''';
-size_inc=22
-index=0
+size_inc = 22
+index = 0
 for i in instructions.split('\n'):
 	font = pygame.font.Font(None, 36)
 	text = font.render(i, 1, (10, 10, 10))
-	background.blit(text, (10,10+size_inc*index))
-	index+=1
+	background.blit(text, (10, 10 + size_inc * index))
+	index += 1
 
 # Blit everything to the screen
 screen.blit(background, (0, 0))
@@ -91,20 +92,20 @@ while True:
 		stop();
 		continue;
 	if (event.type != pygame.KEYDOWN):
-		continue;	
+		continue;
 	char = event.unicode;
-	if char=='w':
-		fwd()	;# Move forward
-	elif char=='a':
-		left();	# Turn left
-	elif char=='d':
-		right();# Turn Right
-	elif char=='s':
-		bwd();# Move back
-	elif char=='t':
-		increase_speed();	# Increase speed
-	elif char=='g':
-		decrease_speed();	# Decrease speed
-	elif char=='z':
-		print "\nExiting";		# Exit
+	if char == 'w':
+		fwd();  # Move forward
+	elif char == 'a':
+		left();  # Turn left
+	elif char == 'd':
+		right();  # Turn Right
+	elif char == 's':
+		bwd();  # Move back
+	elif char == 't':
+		increase_speed();  # Increase speed
+	elif char == 'g':
+		decrease_speed();  # Decrease speed
+	elif char == 'z':
+		print "\nExiting";  # Exit
 		sys.exit();

@@ -28,44 +28,44 @@ along with this program.  If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
 '''
 
 import line_sensor
-import time
+
 
 def get_sensorval():
 	while True:
-		val=line_sensor.read_sensor()
-		if val[0]<>-1:
+		val = line_sensor.read_sensor()
+		if val[0] <> -1:
 			return val
-		#else:
-			#Read once more to clear buffer and remove junk values
+		# else:
+		# Read once more to clear buffer and remove junk values
 		#	val=line_sensor.read_sensor()
-	
+
+
 print "WHITE LINE SETUP"
-while True:	
+while True:
 	print "\nKeep all the sensors over a white strip and press ENTER",
 	raw_input()
 	print "--> Line sensor readings: ",
 	get_sensorval()
 	print get_sensorval()
-	print "If the reading look good, press 'y' and Enter to continue, any other key to read again" 
-	inp=raw_input()
-	if inp=='y':
+	print "If the reading look good, press 'y' and Enter to continue, any other key to read again"
+	inp = raw_input()
+	if inp == 'y':
 		line_sensor.set_white_line()
 		break
 print "White Line values set:",
 print line_sensor.get_white_line()
 
 print "BLACK LINE SETUP"
-while True:	
+while True:
 	print "\nKeep all the sensors over a black strip and press ENTER",
 	raw_input()
 	print "--> Line sensor readings: ",
 	get_sensorval()
 	print get_sensorval()
-	print "If the reading look good, press 'y' and Enter to continue, any other key to read again" 
-	inp=raw_input()
-	if inp=='y':
+	print "If the reading look good, press 'y' and Enter to continue, any other key to read again"
+	inp = raw_input()
+	if inp == 'y':
 		line_sensor.set_black_line()
 		break
 print "Black Line values set:",
 print line_sensor.get_black_line()
-

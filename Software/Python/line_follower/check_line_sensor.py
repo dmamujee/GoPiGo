@@ -26,40 +26,43 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
 '''
-import line_sensor
-import time
 import subprocess
 from timeit import default_timer as timer
 
-debug=0
+import line_sensor
+
+debug = 0
+
 
 def get_sensorval():
 	while True:
-		val=line_sensor.read_sensor()
-		if val[0]<>-1:
+		val = line_sensor.read_sensor()
+		if val[0] <> -1:
 			return val
-		#else:
-			#Read once more to clear buffer and remove junk values
+		# else:
+		# Read once more to clear buffer and remove junk values
 		#	val=line_sensor.read_sensor()
 
+
 def check_line_sensor():
-	output = subprocess.check_output(['i2cdetect', '-y','1'])
-	if output.find('06') >=0:
+	output = subprocess.check_output(['i2cdetect', '-y', '1'])
+	if output.find('06') >= 0:
 		print "--> Line sensor found\n"
 		if debug:
 			print output
 	else:
-		print "--> Line sensor not found" 
+		print "--> Line sensor not found"
 		print output
 		print ""
 
+
 check_line_sensor()
-start=timer()
-l0,l1,l2,l3,l4=get_sensorval()
-end=timer()
-print "Time:\t%.4f s" %(end-start)
-print "IR1:\t%d /1023 " %(l0)
-print "IR2:\t%d /1023 " %(l1)
-print "IR3:\t%d /1023 " %(l2)
-print "IR4:\t%d /1023 " %(l3)
-print "IR5:\t%d /1023 " %(l4)
+start = timer()
+l0, l1, l2, l3, l4 = get_sensorval()
+end = timer()
+print "Time:\t%.4f s" % (end - start)
+print "IR1:\t%d /1023 " % (l0)
+print "IR2:\t%d /1023 " % (l1)
+print "IR3:\t%d /1023 " % (l2)
+print "IR4:\t%d /1023 " % (l3)
+print "IR5:\t%d /1023 " % (l4)

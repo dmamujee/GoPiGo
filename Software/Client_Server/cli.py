@@ -32,23 +32,25 @@ along with this program.  If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
 
 import socket
 import time
+
+
 def send(msg):
 	TCP_IP = '127.0.0.1'
 	TCP_PORT = 5005
 	BUFFER_SIZE = 1024
 	MESSAGE = msg
-	
-	#Create a socket
+
+	# Create a socket
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	#Connect to the server
+	# Connect to the server
 	s.connect((TCP_IP, TCP_PORT))
-	#Send the command
+	# Send the command
 	s.send(MESSAGE)
-	#Recieve response back
+	# Recieve response back
 	data = s.recv(BUFFER_SIZE)
 	s.close()
 	return data
-	
+
 
 print send('f')
 time.sleep(2)

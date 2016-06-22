@@ -28,13 +28,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/gpl-3.0.txt>.
 '''
 
 import line_sensor
-import time
 
-line_pos=[0]*5
-white_line=line_sensor.get_white_line()
-black_line=line_sensor.get_black_line()
-range_sensor= line_sensor.get_range()
-threshold=[a+b/2 for a,b in zip(white_line,range_sensor)]
+line_pos = [0] * 5
+white_line = line_sensor.get_white_line()
+black_line = line_sensor.get_black_line()
+range_sensor = line_sensor.get_range()
+threshold = [a + b / 2 for a, b in zip(white_line, range_sensor)]
 
 # print white_line
 # print black_line
@@ -42,12 +41,10 @@ threshold=[a+b/2 for a,b in zip(white_line,range_sensor)]
 # print threshold
 
 while True:
-	raw_vals=line_sensor.get_sensorval()
+	raw_vals = line_sensor.get_sensorval()
 	for i in range(5):
-		if raw_vals[i]>threshold[i]:
-			line_pos[i]=1
+		if raw_vals[i] > threshold[i]:
+			line_pos[i] = 1
 		else:
-			line_pos[i]=0
+			line_pos[i] = 0
 	print line_pos
-	
-

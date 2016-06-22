@@ -34,6 +34,7 @@ THE SOFTWARE.
 '''
 
 import time
+
 import gopigo
 
 # Connect the analog sensor like the sound sensor, light sensor, rotatary sensor to  A1
@@ -41,11 +42,11 @@ import gopigo
 #   The analog sensors won't work on any other port
 
 sensor_pin = gopigo.analogPort
-gopigo.pinMode(sensor_pin,"INPUT")
+gopigo.pinMode(sensor_pin, "INPUT")
 while True:
-    try:
-        print (gopigo.analogRead(sensor_pin))
-        time.sleep(.5)
+	try:
+		print (gopigo.analogRead(sensor_pin))
+		time.sleep(.5)
 
-    except IOError:
-        print ("Error")
+	except IOError:
+		print ("Error")
