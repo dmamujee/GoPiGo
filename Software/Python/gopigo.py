@@ -5,10 +5,7 @@
 # History
 # ------------------------------------------------
 # Author	Date      		Comments
-# Karan		30 March 14  	Initial Authoring
-# 			02 July  14		Removed bugs and some features added (v0.9) 
-#			26 Aug	 14		Code commenting and cleanup
-#			07 June  16		DHT example added																		
+# David		22 Jun 16	  	Initial Authoring
 '''
 ## License
  GoPiGo for the Raspberry Pi: an open source robotics platform for the Raspberry Pi.
